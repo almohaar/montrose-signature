@@ -1,0 +1,11 @@
+POST http://localhost:3000/api/rooms
+
+{
+  "name": "Deluxe Room | 1106",
+  "description": "Experience luxury and comfort in our Deluxe Room, featuring modern amenities and stunning views. Perfect for relaxation and business.",
+  "images": ["/images/card-deluxe-003.jpg"],
+  "type": "DELUXE",
+  "amenities": ["WiFi 24/7", "Gym", "Swimming Pool", "Parking"],
+  "price": 60000
+}
+// Content-Type: application/json

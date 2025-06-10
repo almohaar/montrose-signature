@@ -1,0 +1,125 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider = "prisma-client-js"
+  output   = "../src/generated/prisma"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id               String    @id @default(uuid())
+  email            String    @unique
+  name             String
+  password         String
+  role             Role      @default(GUEST)
+  phone            String
+  address          Json? // e.g. { "street": "123 Main St", "city": "New York", "state": "NY", "zip": "10001" }
+  profilePic       String?
+  isActive         Boolean   @default(true)
+  emailVerified    DateTime?
+  isVerified       Boolean   @default(false)
+  lastLogin        DateTime?
+  resetToken       String?
+  resetTokenExpiry DateTime?
+  isDeleted        Boolean   @default(false)
+  bookings         Booking[]
+  createdAt        DateTime  @default(now())
+  updatedAt        DateTime  @updatedAt
+}
+
+model Room {
+  id          String    @id @default(uuid())
+  name        String
+  type        RoomType
+  price       Int
+  description String
+  amenities   String[] // e.g. ["wifi","breakfast"]
+  images      String[] // URLs
+  rating      Float?
+  reviews     Int?
+  isActive    Boolean?  @default(true) // for rooms under maintenance
+  isFeatured  Boolean?  @default(false)
+  isDeleted   Boolean?  @default(false)
+  bookings    Booking[]
+  createdAt   DateTime  @default(now())
+  updatedAt   DateTime  @updatedAt
+}
+
+model Booking {
+  id                 String        @id @default(uuid())
+  user               User          @relation(fields: [userId], references: [id])
+  userId             String
+  room               Room          @relation(fields: [roomId], references: [id])
+  roomId             String
+  checkIn            DateTime
+  checkOut           DateTime
+  totalPrice         Int
+  extras             Json // e.g. ["spa", "dinner"]
+  guestName          String
+  guestEmail         String
+  guestPhone         String
+  paid               Boolean       @default(false)
+  paymentId          String?
+  isCancelled        Boolean       @default(false)
+  cancellationReason String?
+  cancellationDate   DateTime?
+  paymentMethod      PaymentMethod // e.g. "credit_card", "paypal"
+  paymentStatus      PaymentStatus // e.g. "paid", "pending", "failed"
+  paymentDate        DateTime?
+  status             BookingStatus @default(PENDING)
+  createdAt          DateTime      @default(now())
+  updatedAt          DateTime      @updatedAt
+
+  @@index([checkIn, roomId, checkOut])
+}
+
+enum PaymentMethod {
+  CREDIT_CARD
+  PAYPAL
+  BANK_TRANSFER
+}
+
+enum PaymentStatus {
+  PAID
+  PENDING
+  FAILED
+}
+
+enum Role {
+  ADMIN
+  MANAGER
+  STAFF
+  GUEST
+  SUPER_ADMIN
+}
+
+enum RoomType {
+  DELUXE
+  EXECUTIVE
+  JUNIOR_SUITES
+  EXECUTIVE_SUITES
+}
+
+enum BookingStatus {
+  PENDING
+  CONFIRMED
+  CANCELLED
+  COMPLETED
+  CHECKED_IN
+  CHECKED_OUT
+  NO_SHOW
+  REFUNDED
+  IN_PROGRESS
+  INACTIVE
+  ACTIVE
+  EXPIRED
+  UNDER_MAINTENANCE
+}

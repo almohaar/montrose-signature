@@ -1,0 +1,4 @@
+-- AlterTable
+ALTER TABLE "Room" ALTER COLUMN "isActive" DROP NOT NULL,
+ALTER COLUMN "isFeatured" DROP NOT NULL,
+ALTER COLUMN "isDeleted" DROP NOT NULL;
