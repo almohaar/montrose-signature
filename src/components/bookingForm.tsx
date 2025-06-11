@@ -57,25 +57,25 @@ export function BookingForm({ room }: { room: Room }) {
 
     try {
       const { dates, extras } = useBookingStore.getState();
-      const res = await fetch("/api/bookings", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          roomId: room.id,
-          dates: {
-            start: dates!.start.toISOString(),
-            end: dates!.end.toISOString(),
-          },
-          extras,
-        }),
-      });
+      // const res = await fetch("/api/bookings", {
+      //   method: "POST",
+      //   headers: { "Content-Type": "application/json" },
+      //   body: JSON.stringify({
+      //     roomId: room.id,
+      //     dates: {
+      //       start: dates!.start.toISOString(),
+      //       end: dates!.end.toISOString(),
+      //     },
+      //     extras,
+      //   }),
+      // });
 
-      const data = await res.json();
-      if (!res.ok || !data.success) throw new Error(data.message);
+      // const data = await res.json();
+      // if (!res.ok || !data.success) throw new Error(data.message);
 
       toast.success("Booking created!");
       reset();
-      router.push(`/booking/${room.id}/confirmation?bookingId=${data.booking.id}`);
+      router.push(`/booking/${room.id}/payment`);
     } catch (err: any) {
       toast.error(err.message || "Booking failed");
     } finally {
