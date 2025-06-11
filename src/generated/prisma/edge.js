@@ -238,7 +238,7 @@ const config = {
       "value": "prisma-client-js"
     },
     "output": {
-      "value": "/home/alli/Documents/work/montrose/montrose_web/src/generated/prisma",
+      "value": "/home/alli/Documents/work/montrose/montrose-signature/src/generated/prisma",
       "fromEnvVar": null
     },
     "config": {
@@ -252,7 +252,7 @@ const config = {
       }
     ],
     "previewFeatures": [],
-    "sourceFilePath": "/home/alli/Documents/work/montrose/montrose_web/prisma/schema.prisma",
+    "sourceFilePath": "/home/alli/Documents/work/montrose/montrose-signature/prisma/schema.prisma",
     "isCustomOutput": true
   },
   "relativeEnvPaths": {
@@ -266,11 +266,12 @@ const config = {
     "db"
   ],
   "activeProvider": "postgresql",
+  "postinstall": false,
   "inlineDatasources": {
     "db": {
       "url": {
         "fromEnvVar": "DATABASE_URL",
-        "value": "postgresql://montrose_admin:Montrose28@localhost:5432/montrose_web"
+        "value": null
       }
     }
   },

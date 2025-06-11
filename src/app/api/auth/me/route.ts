@@ -1,5 +1,5 @@
 import { verifyToken } from "@/lib/auth/jwt";
-import { User } from "@prisma/client";
+// import { User } from "@prisma/client";
 import { cookies } from "next/headers";
 import { NextResponse } from "next/server";
 
@@ -11,7 +11,7 @@ export async function GET() {
   const decoded = verifyToken(token) as any;
   if (!decoded) return NextResponse.json({ user: null });
 
-  const user: User = {
+  const user = {
     id: "1",
     email: "user@gmail.com",
     name: "User",
