@@ -67,7 +67,7 @@ export function RoomCard({
 
         <div className="mt-auto">
           <Button asChild className="w-full mt-4">
-            <Link href={`/rooms/${id}`}>View Details</Link>
+            <Link href={`/apartments/${id}`}>View Details</Link>
           </Button>
         </div>
       </div>

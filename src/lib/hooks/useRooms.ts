@@ -19,7 +19,7 @@ function normalizeType(raw: unknown): Room["type"] {
 }
 
 export function useRooms() {
-  const { data, error, isValidating } = useSWR<Room[]>("/api/rooms", fetcher);
+  const { data, error, isValidating } = useSWR<Room[]>("/api/apartments", fetcher);
 
   const rooms: Room[] = (data ?? []).map((r) => ({
     id: r.id,
@@ -49,7 +49,7 @@ export function useRooms() {
 }
 
 export function useRoom(id: string) {
-  const { data, error, isValidating } = useSWR<Room>(`/api/rooms/${id}`, fetcher);
+  const { data, error, isValidating } = useSWR<Room>(`/api/apartments/${id}`, fetcher);
 
   const room = data
     ? {
@@ -83,7 +83,7 @@ export function useRoom(id: string) {
 }
 
 export function useRoomImages(id: string) {
-  const { data, error, isValidating } = useSWR<string[]>(`/api/rooms/${id}/images`, fetcher);
+  const { data, error, isValidating } = useSWR<string[]>(`/api/apartments/${id}/images`, fetcher);
   return {
     images: data,
     isLoading: !error && !data,
@@ -93,7 +93,7 @@ export function useRoomImages(id: string) {
 }
 export function useRoomAvailability(id: string) {
   const { data, error, isValidating } = useSWR<{ available: boolean }>(
-    `/api/rooms/${id}/availability`,
+    `/api/apartments/${id}/availability`,
     fetcher
   );
   return {
@@ -105,7 +105,7 @@ export function useRoomAvailability(id: string) {
 }
 export function useRoomBooking(id: string) {
   const { data, error, isValidating } = useSWR<{ booking: boolean }>(
-    `/api/rooms/${id}/booking`,
+    `/api/apartments/${id}/booking`,
     fetcher
   );
   return {
@@ -117,7 +117,7 @@ export function useRoomBooking(id: string) {
 }
 export function useRoomReviews(id: string) {
   const { data, error, isValidating } = useSWR<{ reviews: string[] }>(
-    `/api/rooms/${id}/reviews`,
+    `/api/apartments/${id}/reviews`,
     fetcher
   );
   return {
@@ -129,7 +129,7 @@ export function useRoomReviews(id: string) {
 }
 export function useRoomRatings(id: string) {
   const { data, error, isValidating } = useSWR<{ ratings: number }>(
-    `/api/rooms/${id}/ratings`,
+    `/api/apartments/${id}/ratings`,
     fetcher
   );
   return {
@@ -141,7 +141,7 @@ export function useRoomRatings(id: string) {
 }
 export function useRoomAmenities(id: string) {
   const { data, error, isValidating } = useSWR<{ amenities: string[] }>(
-    `/api/rooms/${id}/amenities`,
+    `/api/apartments/${id}/amenities`,
     fetcher
   );
   return {

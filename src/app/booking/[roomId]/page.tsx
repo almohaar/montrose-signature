@@ -32,7 +32,7 @@ export default async function BookingPage({ params }: { params: Promise<{ roomId
           <div className="flex items-center justify-between">
             <h1 className="text-2xl font-bold">Complete Your Booking</h1>
             <Link
-              href={`/rooms/${room.id}`}
+              href={`/apartments/${room.id}`}
               className="text-sm text-muted-foreground hover:underline"
             >
               ← Back to room

@@ -201,7 +201,7 @@ export default function HomePage() {
           Ready to experience Montrose?
         </motion.h2>
         <Button asChild className="bg-white text-montrose-red font-semibold px-8 py-3">
-          <Link href="/rooms">Book Now</Link>
+          <Link href="/apartments">Book Now</Link>
         </Button>
       </section>
     </main>

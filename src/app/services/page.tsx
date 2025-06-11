@@ -31,13 +31,13 @@ export default function ServicesPage() {
         viewport={{ once: true }}
       >
         <p className="text-lg mb-4">
-          Ready to experience luxury? Book your stay with Montrose now.
+          Ready to experience luxury? Book your stay with Montrose Signature now.
         </p>
         <a
-          href="/rooms"
+          href="/apartments"
           className="inline-block px-8 py-3 bg-montrose-wine text-white rounded-full shadow-lg hover:bg-montrose-wine/90 transition"
         >
-          Browse Rooms
+          Browse Apartments
         </a>
       </motion.div>
     </motion.main>

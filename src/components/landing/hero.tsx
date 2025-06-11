@@ -94,7 +94,7 @@ const Hero = () => {
               className="px-6 py-3 font-semibold bg-montrose-wine text-white rounded-full shadow-lg"
               size="lg"
             >
-              <a href="/rooms">Explore Apartments</a>
+              <a href="/apartments">Explore Apartments</a>
             </Button>
             <Button
               asChild
