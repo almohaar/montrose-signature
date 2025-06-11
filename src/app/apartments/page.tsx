@@ -27,16 +27,16 @@ export default function RoomsPage() {
       const matchesPrice = r.price >= minP && r.price <= maxP;
       const roomAmens = r.amenities?.toString().toLowerCase().split(",") || [];
       const matchesAmens = amenities.every((a) =>
-        roomAmens.some((ra) => ra.includes(a.toLowerCase()))
+        roomAmens.some((ra: string) => ra.includes(a.toLowerCase()))
       );
       return matchesText && matchesType && matchesPrice && matchesAmens;
     })
     .sort((a, b) => {
       if (sortBy === "price-asc") return a.price - b.price;
       if (sortBy === "price-desc") return b.price - a.price;
-      // if (sortBy === "rating") return b.rating - a.rating;
       return 0;
     });
+
 
   return (
     <>
