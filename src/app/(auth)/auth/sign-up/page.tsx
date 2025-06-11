@@ -12,7 +12,7 @@ import * as z from "zod";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import { useAuthStore } from "@/store/auth";
+// import { useAuthStore } from "@/store/auth";
 
 const signUpSchema = z
   .object({
@@ -31,7 +31,7 @@ type FormData = z.infer<typeof signUpSchema>;
 
 export default function SignUpPage() {
   const router = useRouter();
-  const { signUp } = useAuthStore();
+  // const { signUp } = useAuthStore();
   const [err, setErr] = useState<string | null>(null);
   const [show, setShow] = useState(false);
 
@@ -43,9 +43,9 @@ export default function SignUpPage() {
 
   const onSubmit = async (data: FormData) => {
     try {
-      const success = await signUp(data.email, data.password, data.name, data.phone);
+      // const success = await signUp(data.email, data.password, data.name, data.phone);
 
-      if (success) {
+      if (true) {
         router.push("/dashboard");
       }
     } catch (e: any) {

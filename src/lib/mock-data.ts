@@ -2,65 +2,88 @@
 import { Room } from "@prisma/client";
 import { formatISO, addDays } from "date-fns";
 
-
-
 export const rooms: Room[] = [
   {
+    id: "1",
     name: "Deluxe King Room",
     type: "DELUXE",
     price: 150000,
     description:
       "Enjoy city views from your king‐size bed, with premium linens, minibar, and a marble bathroom.",
     amenities: ["WiFi 24/7", "Gym", "Swimming Pool", "Parking"],
-    images: ["/images/card-deluxe-002.jpg", "/images/card-deluxe-003.jpg", "/images/card-deluxe-004.jpg"],
-    // rating: 4.5,
-
+    images: [
+      "/images/card-deluxe-002.jpg",
+      "/images/card-deluxe-003.jpg",
+      "/images/card-deluxe-004.jpg",
+    ],
+    isActive: true,
+    isDeleted: false,
+    isFeatured: false,
+    createdAt: new Date(),
+    updatedAt: new Date(),
+    reviews: 2,
+    rating: 4.5,
   },
   {
     id: "2",
     name: "Executive Suite",
-    type: "executive",
+    type: "EXECUTIVE",
     price: 250000,
     description: "Spacious suite with separate living area, jacuzzi tub, and ocean view balcony.",
     amenities: ["WiFi 24/7", "Mini Bar", "Jacuzzi", "Parking"],
-    images: ["/images/card-executiveroom-002.jpg", "/images/card-executiveroom-003.jpg", "/images/card-executiveroom-004.jpg"],
-    location: "Lekki, Lagos",
-    rating: 4.8,
-    reviews: [
-      { user: "Carol", comment: "Exceptional service.", rating: 5 },
-      { user: "Dave", comment: "A bit pricey but worth it.", rating: 4 },
+    images: [
+      "/images/card-executiveroom-002.jpg",
+      "/images/card-executiveroom-003.jpg",
+      "/images/card-executiveroom-004.jpg",
     ],
+    rating: 4.8,
+    isActive: true,
+    isDeleted: false,
+    isFeatured: false,
+    createdAt: new Date(),
+    updatedAt: new Date(),
+    reviews: 2,
   },
   {
     id: "3",
     name: "Junior Suite",
-    type: "junior suites",
+    type: "JUNIOR_SUITES",
     price: 200000,
     description: "Cozy suite with king bed, work desk, and complimentary breakfast for two.",
     amenities: ["WiFi 24/7", "Breakfast", "Gym", "Parking"],
-    images: ["/images/card-juniorsuite-002.jpg", "/images/card-juniorsuite-003.jpg", "/images/card-juniorsuite-004.jpg"],
-    location: "Lekki, Lagos",
-    rating: 4.3,
-    reviews: [
-      { user: "Eve", comment: "Great value!", rating: 4 },
-      { user: "Frank", comment: "Lovely decor.", rating: 4 },
+    images: [
+      "/images/card-juniorsuite-002.jpg",
+      "/images/card-juniorsuite-003.jpg",
+      "/images/card-juniorsuite-004.jpg",
     ],
+    rating: 4.3,
+    isActive: true,
+    isDeleted: false,
+    isFeatured: false,
+    createdAt: new Date(),
+    updatedAt: new Date(),
+    reviews: 2,
   },
   {
     id: "4",
     name: "Executive Family Suite",
-    type: "executive suites",
+    type: "EXECUTIVE_SUITES",
     price: 350000,
     description:
       "Two-bedroom suite perfect for families, with living room, kitchenette and pool access.",
     amenities: ["WiFi 24/7", "Kitchenette", "Swimming Pool", "Parking"],
-    images: ["/images/card-executivesuite-002.jpg", "/images/card-executivesuite-003.jpg", "/images/card-executivesuite-004.jpg"],
-    location: "Lekki, Lagos",
-    rating: 4.7,
-    reviews: [
-      { user: "Grace", comment: "Perfect for our family!", rating: 5 },
-      { user: "Heidi", comment: "Spacious and clean.", rating: 5 },
+    images: [
+      "/images/card-executivesuite-002.jpg",
+      "/images/card-executivesuite-003.jpg",
+      "/images/card-executivesuite-004.jpg",
     ],
+    rating: 4.7,
+    isActive: true,
+    isDeleted: false,
+    isFeatured: false,
+    createdAt: new Date(),
+    updatedAt: new Date(),
+    reviews: 2,
   },
 ];
 

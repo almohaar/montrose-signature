@@ -25,7 +25,7 @@ export default function RoomsPage() {
       const matchesText = r.name.toLowerCase().includes(searchText.toLowerCase());
       const matchesType = types.length ? types.includes(r.type) : true;
       const matchesPrice = r.price >= minP && r.price <= maxP;
-      const roomAmens = r.amenities.map((x) => x.toLowerCase());
+      const roomAmens = r.amenities?.toString().toLowerCase().split(",") || [];
       const matchesAmens = amenities.every((a) =>
         roomAmens.some((ra) => ra.includes(a.toLowerCase()))
       );
@@ -34,7 +34,7 @@ export default function RoomsPage() {
     .sort((a, b) => {
       if (sortBy === "price-asc") return a.price - b.price;
       if (sortBy === "price-desc") return b.price - a.price;
-      if (sortBy === "rating") return b.rating - a.rating;
+      // if (sortBy === "rating") return b.rating - a.rating;
       return 0;
     });
 
@@ -105,14 +105,7 @@ export default function RoomsPage() {
                     whileHover={{ scale: 1.02 }}
                   >
                     <RoomCard
-                      id={r.id}
-                      name={r.name}
-                      type={r.type}
-                      price={r.price}
-                      rating={r.rating}
-                      amenities={r.amenities}
-                      location={r.location}
-                      images={r.images}
+                     {...r}
                     />
                   </motion.div>
                 ))}

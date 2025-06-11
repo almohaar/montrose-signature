@@ -1,6 +1,6 @@
 import nodemailer from "nodemailer";
 
- async function sendEmail(to: string, subject: string, html: string) {
+async function sendEmail(to: string, subject: string, html: string) {
   const transporter = nodemailer.createTransport({
     host: "sandbox.smtp.mailtrap.io",
     port: 2525,
@@ -11,7 +11,7 @@ import nodemailer from "nodemailer";
   });
 
   await transporter.sendMail({
-    from: '"Montrose Signature" <noreply@montrosesignature.com>',
+    from: '"Montrose Hotel" <noreply@montrose.com>',
     to,
     subject,
     html,

@@ -1,5 +1,5 @@
 import { fetcher } from "@/lib/api";
-import { Room } from "@/types/app";
+import { Room } from "@prisma/client";
 import useSWR from "swr";
 
 function coerceStringArray(val: unknown): string[] {
@@ -7,16 +7,16 @@ function coerceStringArray(val: unknown): string[] {
   return Array.isArray(val) ? (val as any) : [];
 }
 
-// function normalizeType(raw: unknown): PrismaRoom["type"] {
-//   if (typeof raw !== "string") return "DELUXE"; // fallback
-//   // replace spaces with underscore, uppercase
-//   const t = raw.replace(/\s+/g, "_").toUpperCase();
-//   // guard: only valid enum keys
-//   if (["DELUXE", "EXECUTIVE", "JUNIOR_SUITES", "EXECUTIVE_SUITES"].includes(t)) {
-//     return t as PrismaRoom["type"];
-//   }
-//   return "DELUXE";
-// }
+function normalizeType(raw: unknown): Room["type"] {
+  if (typeof raw !== "string") return "DELUXE"; // fallback
+  // replace spaces with underscore, uppercase
+  const t = raw.replace(/\s+/g, "_").toUpperCase();
+  // guard: only valid enum keys
+  if (["DELUXE", "EXECUTIVE", "JUNIOR_SUITES", "EXECUTIVE_SUITES"].includes(t)) {
+    return t as Room["type"];
+  }
+  return "DELUXE";
+}
 
 export function useRooms() {
   const { data, error, isValidating } = useSWR<Room[]>("/api/rooms", fetcher);
@@ -26,13 +26,18 @@ export function useRooms() {
     name: r.name,
     type: r.type,
     price: r.price,
-    amenities: coerceStringArray(r.amenities),
+    amenities: r.amenities,
     images: coerceStringArray(r.images),
-    rating: 5, // default until you fetch real ratings
+    rating: r.rating, // default until you fetch real ratings
     location: "Lekki, Lagos",
     description: r.description,
-    bookings: r.bookings ?? [],
+    // bookings: r.bookings ?? [],
     reviews: r.reviews ?? [],
+    isActive: r.isActive,
+    isDeleted: r.isDeleted,
+    isFeatured: r.isFeatured,
+    createdAt: r.createdAt,
+    updatedAt: r.updatedAt,
   }));
 
   return {
@@ -52,13 +57,18 @@ export function useRoom(id: string) {
         name: data.name,
         type: data.type,
         price: data.price,
-        amenities: coerceStringArray(data.amenities),
+        amenities: data.amenities,
         images: coerceStringArray(data.images),
-        rating: 5,
+        rating: data.rating, // default until you fetch real ratings
         location: "Lekki, Lagos",
         description: data.description,
-        bookings: data.bookings ?? [],
+        // bookings: data.bookings ?? [],
         reviews: data.reviews ?? [],
+        isActive: data.isActive,
+        isDeleted: data.isDeleted,
+        isFeatured: data.isFeatured,
+        createdAt: data.createdAt,
+        updatedAt: data.updatedAt,
       }
     : null;
 

@@ -1,5 +1,5 @@
 import { hash } from "argon2";
-import { prisma } from "@/lib/prisma";
+// import { prisma } from "@/lib/prisma";
 
 const signUp = async ({
   email,
@@ -16,16 +16,48 @@ const signUp = async ({
     return { success: false, message: "All fields are required" };
   }
 
-  const existing = await prisma.user.findUnique({ where: { email } });
+  const existing = {
+    id: "1",
+    email: "user@gmail.com",
+    name: "User",
+    phone: "1234567890",
+    createdAt: new Date(),
+    updatedAt: new Date(),
+    address: "123 Main St",
+    isActive: true,
+    isDeleted: false,
+    isVerified: true,
+    lastLogin: new Date(),
+    password: "hashed_password",
+    profilePic: "https://example.com/profile.jpg",
+    resetToken: "nuldfeilfe",
+    resetTokenExpiry: new Date(),
+    role: "GUEST",
+  };
   if (existing) {
     return { success: false, message: "Email is already registered" };
   }
 
   const hashedPassword = await hash(password);
 
-  const user = await prisma.user.create({
-    data: { email, name, password: hashedPassword, phone },
-  });
+  const user = {
+    id: "1",
+    email: "user@gmail.com",
+    name: "User",
+    phone: "1234567890",
+    createdAt: new Date(),
+    updatedAt: new Date(),
+    address: "123 Main St",
+    isActive: true,
+    isDeleted: false,
+    isVerified: true,
+    lastLogin: new Date(),
+    password: "hashed_password",
+    profilePic: "https://example.com/profile.jpg",
+    resetToken: "nuldfeilfe",
+    resetTokenExpiry: new Date(),
+    role: "GUEST",
+  };
 
   return {
     success: true,

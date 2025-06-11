@@ -11,7 +11,7 @@ import * as z from "zod";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import { useAuthStore } from "@/store";
+// import { useAuthStore } from "@/store";
 import toast from "react-hot-toast";
 
 const resetSchema = z
@@ -34,19 +34,19 @@ export default function ResetPasswordPage() {
 
 
   const [token, setToken] = useState<string | null>(null);
-  const { resetPassword, loading } = useAuthStore();
-  const searchParams = useSearchParams();
+  // const { resetPassword, loading } = useAuthStore();
+  // const searchParams = useSearchParams();
   const router = useRouter();
 
-  useEffect(() => {
-    const t = searchParams.get("token");
-    if (!t) {
-      toast.error("Missing token");
-      router.push("/forgot-password");
-    } else {
-      setToken(t);
-    }
-  }, [searchParams, router]);
+  // useEffect(() => {
+  //   const t = searchParams.get("token");
+  //   if (!t) {
+  //     toast.error("Missing token");
+  //     router.push("/forgot-password");
+  //   } else {
+  //     setToken(t);
+  //   }
+  // }, [searchParams, router]);
 
   const {
     register,
@@ -68,8 +68,8 @@ export default function ResetPasswordPage() {
         return toast.error("Invalid or missing token");
       }
 
-      const success = await resetPassword(token, data.password);
-      if (success) {
+      // const success = await resetPassword(token, data.password);
+      if (true) {
         router.push("/sign-in");
       }
     } catch (e: any) {

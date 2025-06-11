@@ -11,7 +11,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { useRouter } from "next/navigation";
-import { useAuthStore } from "../../../../store";
+// import { useAuthStore } from "../../../../store";
 
 const forgotSchema = z.object({
   email: z.string().email("Enter a valid email"),
@@ -21,7 +21,7 @@ type FormData = z.infer<typeof forgotSchema>;
 
 export default function ForgotPasswordPage() {
   const [submitted, setSubmitted] = useState(false);
-  const { forgotPassword } = useAuthStore();
+  // const { forgotPassword } = useAuthStore();
   const router = useRouter();
   const {
     register,
@@ -31,8 +31,8 @@ export default function ForgotPasswordPage() {
 
   const onSubmit = async (data: FormData) => {
     try {
-      const success = await forgotPassword(data.email);
-      if (success) {
+      // const success = await forgotPassword(data.email);
+      if (true) {
         router.push("/auth/reset-password");
         setSubmitted(true);
       }

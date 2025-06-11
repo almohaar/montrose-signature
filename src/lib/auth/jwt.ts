@@ -3,7 +3,7 @@ import jwt from "jsonwebtoken";
 const SECRET = process.env.JWT_SECRET || "supersecret";
 
  function signToken(payload: object, expiresIn = "1d") {
-  return jwt.sign(payload, SECRET, { expiresIn });
+  return jwt.sign(payload, SECRET);
 }
 
 function verifyToken(token: string) {

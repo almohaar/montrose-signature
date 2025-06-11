@@ -6,7 +6,7 @@ import { usePathname } from "next/navigation";
 import { useUIStore } from "@/lib/store";
 import { Button } from "@/components/ui/button";
 import { X, Menu } from "lucide-react";
-import { useAuth } from "@/lib/mock-auth";
+// import { useAuth } from "@/lib/mock-auth";
 
 const NAV_ITEMS = [
   { href: "/", label: "Home" },
@@ -19,8 +19,8 @@ const NAV_ITEMS = [
 export function Header() {
   const pathname = usePathname();
   const { mobileMenuOpen, toggleMobileMenu } = useUIStore();
-  const { user, signOut } = useAuth();
-  console.log("user", user);
+  // const { user, signOut } = useAuth();
+  // console.log("user", user);
 
   return (
     <header className="fixed inset-x-0 top-0 z-50 bg-white shadow-md">
@@ -103,7 +103,7 @@ export function Header() {
               </Link>
             </li>
           ))}
-          <li>
+          {/* <li>
             {user ? (
               <button
                 onClick={() => {
@@ -119,7 +119,7 @@ export function Header() {
                 <Button className="w-full bg-montrose-red text-white">Sign In</Button>
               </Link>
             )}
-          </li>
+          </li> */}
           <li>
             <Link href="/dashboard" onClick={toggleMobileMenu}>
               <Button className="w-full bg-montrose-wine text-white">My Account</Button>

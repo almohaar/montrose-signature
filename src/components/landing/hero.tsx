@@ -68,12 +68,12 @@ const Hero = () => {
           className="text-center text-white max-w-2xl"
         >
           <motion.h1
-            className="text-5xl md:text-7xl font-extrabold mb-4"
+            className="text-xl md:text-6xl font-extrabold mb-4"
             initial={{ y: 20, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
             transition={{ delay: 0.2 }}
           >
-            Experience Luxury at <span className="text-montrose-wine">Montrose</span>
+            Discover Luxury at <span className="text-montrose-wine">Montrose Signature</span>
           </motion.h1>
           <motion.p
             className="text-lg md:text-xl mb-6 font-semibold"
@@ -94,7 +94,7 @@ const Hero = () => {
               className="px-6 py-3 font-semibold bg-montrose-wine text-white rounded-full shadow-lg"
               size="lg"
             >
-              <a href="/rooms">Explore Rooms</a>
+              <a href="/rooms">Explore Apartments</a>
             </Button>
             <Button
               asChild

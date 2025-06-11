@@ -31,7 +31,7 @@ export default function HomePage() {
     <main>
       <Hero />
 
-      {/* Featured Rooms */}
+      {/* Featured Apartments */}
       <section className="py-16 px-4 container mx-auto">
         <motion.h2
           className="text-3xl font-bold text-center mb-8"
@@ -39,7 +39,7 @@ export default function HomePage() {
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
         >
-          Featured Rooms
+          Featured Apartments
         </motion.h2>
         <motion.div
           className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6"
@@ -110,7 +110,7 @@ export default function HomePage() {
           whileInView={{ x: 0, opacity: 1 }}
           viewport={{ once: true }}
         >
-          <h2 className="text-3xl font-bold mb-4">About Montrose</h2>
+          <h2 className="text-3xl font-bold mb-4">About Montrose Signature</h2>
           <p className="text-gray-700 mb-4">
             Since 2010, Montrose Signature has set the standard for luxury hospitality in Lekki. With
             two branches, award-winning service, and world-class amenities, we create unforgettable

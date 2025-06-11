@@ -44,9 +44,11 @@ const useRoomsStore = create<RoomsState>()(
       isAvailable: (roomId, start, end) => {
         const room = get().rooms.find((r) => r.id === roomId);
         if (!room) return false;
-        return !room.bookings?.some(
-          (b) => start < new Date(b.checkOut) && end > new Date(b.checkIn)
-        );
+        return false; // Placeholder logic, implement actual availability check
+        // return !room.bookings?.some(
+        //   (booking) =>
+        //     new Date(booking.checkIn) < end && new Date(booking.checkOut) > start
+        // );
       },
 
       bookRoom: (roomId, start, end) => {

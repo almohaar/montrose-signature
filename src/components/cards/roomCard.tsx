@@ -26,7 +26,7 @@ export function RoomCard({
   rating,
   amenities,
   location,
-  
+
 }: Room) {
   return (
     <motion.div
@@ -54,7 +54,7 @@ export function RoomCard({
           ₦{price.toLocaleString()} <span className="font-normal text-sm">/ night</span>
         </p>
 
-        <div className="flex flex-wrap gap-1 mt-2">
+        {/* <div className="flex flex-wrap gap-1 mt-2">
           {amenities.slice(0, 3).map((am) => (
             <span key={am} className="text-xs bg-gray-200 dark:bg-zinc-800 px-2 py-1 rounded-full">
               {am}
@@ -63,7 +63,7 @@ export function RoomCard({
           {amenities.length > 3 && (
             <span className="text-xs text-montrose-wine ml-auto">+{amenities.length - 3}</span>
           )}
-        </div>
+        </div> */}
 
         <div className="mt-auto">
           <Button asChild className="w-full mt-4">

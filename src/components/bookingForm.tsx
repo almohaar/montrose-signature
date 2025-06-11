@@ -28,15 +28,15 @@ export function BookingForm({ room }: { room: Room }) {
   const { user } = useAuthStore();
 
   // ⭐ gate-keep bookings for signed-in GUEST role
-  useEffect(() => {
-    if (user === null) {
-      toast.error("Please sign in to book");
-      router.push("/auth/sign-in");
-    } else if (user.role !== "GUEST") {
-      toast.error("Only guests can make bookings");
-      router.push("/dashboard");
-    }
-  }, [user, router]);
+  // useEffect(() => {
+  //   if (user === null) {
+  //     toast.error("Please sign in to book");
+  //     router.push("/auth/sign-in");
+  //   } else if (user.role !== "GUEST") {
+  //     toast.error("Only guests can make bookings");
+  //     router.push("/dashboard");
+  //   }
+  // }, [user, router]);
 
   const next = async () => {
     if (!(await trigger())) return toast.error("Fix the errors first");
