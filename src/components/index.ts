@@ -1,4 +1,5 @@
 export { AmenitiesHighlight } from "./amenitiesHighlight";
+export { BookingCard } from "./bookingCard";
 export { BookingForm } from "./bookingForm";
 export { BookingList } from "./bookingList";
 export { Filters } from "./filters";
@@ -17,7 +18,6 @@ export { RoomsLoading } from "./roomsLoading";
 export { RoomSummaryCard } from "./roomSummaryCard";
 export { ServicesPreview } from "./servicesPreview";
 export { SpecialOffersSection } from "./specialOffers";
+export { WhatsAppWidget } from "./whatsappWidget";
 export { WhyChoose } from "./whyChoose";
-
-export { BookingCard } from "./bookingCard";
 

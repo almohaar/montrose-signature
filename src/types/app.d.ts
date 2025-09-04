@@ -1,4 +1,4 @@
-import { RoomType } from "@prisma/client";
+import { RoomType } from "../generated/prisma";
 
 export type CustomRoom = {
   name: string;

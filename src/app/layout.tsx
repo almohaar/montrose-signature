@@ -1,6 +1,6 @@
 
 
-import { Footer, Header } from "@/components";
+import { Footer, Header, WhatsAppWidget } from "@/components";
 import { AuthHydrator, Toaster } from "@/components/ui";
 import type { Metadata } from "next";
 import { ThemeProvider } from "next-themes";
@@ -60,6 +60,7 @@ export default function RootLayout({
               <div className="container mx-auto pt-20">{children}</div>
               <HotToaster />
               <Footer />
+              <WhatsAppWidget />
             </ThemeProvider>
           </AuthProvider>
         </AuthHydrator>
@@ -67,3 +68,5 @@ export default function RootLayout({
     </html>
   );
 }
+
+// MontroseSignature25;
