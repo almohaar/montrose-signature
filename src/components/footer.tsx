@@ -3,7 +3,8 @@
 
 import Link from "next/link";
 import { Input, Button } from "@/components/ui";
-import { Mail, Facebook, Instagram, Twitter, Linkedin } from "lucide-react";
+import { FaFacebook, FaInstagram, FaTwitter, FaPinterestP, FaYoutube } from "react-icons/fa";
+import {Mail} from 'lucide'
 
 export const Footer = () => {
   return (
@@ -18,17 +19,19 @@ export const Footer = () => {
           </p>
           <div className="flex space-x-3 pt-2">
             <Link href="#" aria-label="Facebook" className="text-gray-500 hover:text-montrose-red">
-              <Facebook size={20} />
+              <FaFacebook size={20} />
             </Link>
-            <Link href="#" aria-label="Instagram" className="text-gray-500 hover:text-montrose-red">
-              <Instagram size={20} />
+            <Link href="https://www.instagram.com/montroselekki/" aria-label="Instagram" className="text-gray-500 hover:text-montrose-red">
+              <FaInstagram size={20} />
             </Link>
-            <Link href="#" aria-label="Twitter" className="text-gray-500 hover:text-montrose-red">
-              <Twitter size={20} />
+            <Link href="https://x.com/montroselekki" aria-label="Twitter" className="text-gray-500 hover:text-montrose-red">
+              <FaTwitter size={20} />
             </Link>
-            <Link href="#" aria-label="LinkedIn" className="text-gray-500 hover:text-montrose-red">
-              <Linkedin size={20} />
+            <Link href="https://www.pinterest.com/montroselekki/" aria-label="LinkedIn" className="text-gray-500 hover:text-montrose-red">
+              <FaPinterestP size={20} />
             </Link>
+            <Link href="https://youtube.com/@montrose_lekki?si=7nyOLTgx-Gjm--KZ" aria-label="Youtube" className="text-gray-500 hover:text-montrose-red">
+            <FaYoutube size={20} /></Link>
           </div>
         </div>
 
