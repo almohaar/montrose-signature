@@ -18,19 +18,19 @@ export const Footer = () => {
             experiences that will stay with you forever.
           </p>
           <div className="flex space-x-3 pt-2">
-            <Link href="#" aria-label="Facebook" className="text-gray-500 hover:text-montrose-red">
+            <Link href="#" aria-label="Facebook" className="text-gray-500 hover:text-montrose-red" target="_blank">
               <FaFacebook size={20} />
             </Link>
-            <Link href="https://www.instagram.com/montroselekki/" aria-label="Instagram" className="text-gray-500 hover:text-montrose-red">
+            <Link href="https://www.instagram.com/montroselekki/" aria-label="Instagram" className="text-gray-500 hover:text-montrose-red" target="_blank">
               <FaInstagram size={20} />
             </Link>
-            <Link href="https://x.com/montroselekki" aria-label="Twitter" className="text-gray-500 hover:text-montrose-red">
+            <Link href="https://x.com/montroselekki" aria-label="Twitter" className="text-gray-500 hover:text-montrose-red" target="_blank">
               <FaTwitter size={20} />
             </Link>
-            <Link href="https://www.pinterest.com/montroselekki/" aria-label="LinkedIn" className="text-gray-500 hover:text-montrose-red">
+            <Link href="https://www.pinterest.com/montroselekki/" aria-label="LinkedIn" className="text-gray-500 hover:text-montrose-red" target="_blank">
               <FaPinterestP size={20} />
             </Link>
-            <Link href="https://youtube.com/@montrose_lekki?si=7nyOLTgx-Gjm--KZ" aria-label="Youtube" className="text-gray-500 hover:text-montrose-red">
+            <Link href="https://youtube.com/@montrose_lekki?si=7nyOLTgx-Gjm--KZ" target="_blank" aria-label="Youtube" className="text-gray-500 hover:text-montrose-red">
             <FaYoutube size={20} /></Link>
           </div>
         </div>
