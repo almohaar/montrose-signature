@@ -4,7 +4,7 @@
 import Link from "next/link";
 import { Input, Button } from "@/components/ui";
 import { FaFacebook, FaInstagram, FaTwitter, FaPinterestP, FaYoutube } from "react-icons/fa";
-import {Mail} from 'lucide'
+import {Mail} from 'lucide-react'
 
 export const Footer = () => {
   return (
