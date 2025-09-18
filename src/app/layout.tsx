@@ -39,6 +39,9 @@ export const metadata: Metadata = {
     description: "Experience world‑class hospitality at Montrose Signature’s two Lekki branches.",
     creator: "@MontroseSignature",
   },
+  other: {
+    "p:domain_verify": "b2e4524ef2706402a08627c2774c514d",
+  },
 };
 
 export default function RootLayout({
