@@ -112,7 +112,7 @@ export const RoomDetails = ({ room }: { room: Room }) => {
             {room.description}
           </TabsContent>
 
-          {/* <TabsContent value="amenities" className="flex flex-wrap gap-2">
+          <TabsContent value="amenities" className="flex flex-wrap gap-2">
             {room.amenities.map((am) => {
               let Icon = ChartNoAxesColumnIncreasingIcon;
               if (am === "coffee") Icon = Coffee;
@@ -125,7 +125,7 @@ export const RoomDetails = ({ room }: { room: Room }) => {
                 </Badge>
               );
             })}
-          </TabsContent> */}
+          </TabsContent>
 
           <TabsContent value="policies">
             <Accordion type="single" collapsible className="space-y-2">
