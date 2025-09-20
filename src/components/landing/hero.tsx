@@ -3,6 +3,7 @@
 import { Button } from "@/components/ui/button";
 import { motion } from "framer-motion";
 import { ChevronLeft, ChevronRight } from "lucide-react";
+import Link from "next/link";
 import { useEffect, useState } from "react";
 
 const images = ["/images/bg-001.jpg", "/images/bg-002.jpg", "/images/bg-003.jpg"];
@@ -79,7 +80,7 @@ const Hero = () => {
             transition={{ delay: 0.4 }}
           >
             Fully-furnished apartments with daily housekeeping, high-speed Wi-Fi, and 24/7 support.
-            From ₦<span className="font-bold">50,000</span> / night.
+            From ₦<span className="font-bold">150,000</span> / night.
           </motion.p>
           <motion.div
             className="flex justify-center space-x-4"
@@ -89,22 +90,22 @@ const Hero = () => {
           >
             <Button
               asChild
-              className="px-6 py-3 font-semibold bg-montrose-wine text-white rounded-full shadow-lg"
+              className="px-6 py-3 font-semibold bg-montrose-wine text-white rounded-full shadow-lg hover:bg-montrose-wine hover:text-white"
               size="lg"
             >
-              <a href="/apartments" aria-label="Check availability at Montrose Signature">
+              <Link href="/apartments" aria-label="Check availability at Montrose Signature">
                 Check Availability
-              </a>
+              </Link>
             </Button>
             <Button
               asChild
               variant="outline"
               size="lg"
-              className="px-6 py-3 font-semibold text-white border-white rounded-full shadow-lg"
+              className="px-6 py-3 font-bold bg-gray-900 text-montrose-wine border-0 hover:bg-gray-900 hover:text-montrose-wine rounded-full shadow-lg"
             >
-              <a href="/contact" aria-label="Contact Montrose Signature">
+              <Link href="/contact" aria-label="Contact Montrose Signature">
                 Contact Us
-              </a>
+              </Link>
             </Button>
           </motion.div>
           <p className="mt-4 text-sm text-gray-200">

@@ -1,19 +1,10 @@
-I'm working on a hotel service and booking web application for an hotel in Lekki, Nigeria named Montrose... It's a 5-star luxury hotel.  following industry best practices and using only the best technologies and approaches. I'm using Next, js, TailwindCss, Typescript, Shadcn, prisma, postgres, framer-motion
-
- {Array.from({ length: 5 }).map((_, i) => (
-            <span key={i} className={i < rating ? "" : "opacity-30"}>
-              ⭐
-            </span>
-          ))}
 
 Step	What we’ll build	Description
 1. Booking API-route & persistence	app/api/bookings/route.ts backed by Prisma	Turn our mock POST into a real prisma.booking.create({ … }), saving dates, guest info, extras.
-2. Payment integration	Paystack (or Stripe) in the booking flow	Add a payment step after “Review”—call Paystack via API-route, handle webhook or callback, update booking status.
-3. Confirmation page & email	/booking/[roomId]/confirmation page + transactional email	Show booking details, send an email confirmation via Supabase Functions or a mail service.
+2. Manual Payment and Confirmation Integration
+3. Confirmation page & (email - later)	/booking/[roomId]/confirmation page + transactional email	Show booking details, send an email confirmation via (Supabase Functions) - with Booking Reference No.
 4. Dashboard “My Bookings”	List past & upcoming bookings under /dashboard	Fetch api/bookings?userId=…, render a table with modify/cancel actions.
-5. Polishing & tests	Cypress end-to-end test of full flow	Write a Cypress spec that goes through sign-in → select room → book → payment → confirmation.
-
-URL (App-Router “page.tsx”)	Wrapped by Layout	Purpose
+-----------------------------------------
 /	app/layout.tsx	Home / Landing
 /rooms	Root layout	Room listing with filters
 /rooms/[id]	Root layout	Room detail gallery, tabs, booking CTA

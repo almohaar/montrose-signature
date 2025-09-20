@@ -1,18 +1,19 @@
-// app/auth/signin/page.tsx
+// app/auth/login/page.tsx
 "use client";
 
 import { zodResolver } from "@hookform/resolvers/zod";
 import { motion } from "framer-motion";
 import { Eye, EyeOff, Lock, Mail } from "lucide-react";
 import { useRouter } from "next/navigation";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { useForm } from "react-hook-form";
+import { toast } from "sonner";
 import * as z from "zod";
 
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-// import { useAuthStore } from "@/store";
+import { createClient } from "@/lib/supabase/client";
 
 const signInSchema = z.object({
   email: z.string().email("Enter a valid email"),
@@ -23,12 +24,8 @@ type FormData = z.infer<typeof signInSchema>;
 
 export default function SignInPage() {
   const router = useRouter();
-  // const { signIn, user } = useAuthStore();
+  const supabase = createClient();
   const [show, setShow] = useState(false);
-
-  // useEffect(() => {
-  //   if (user !== null) router.push("/dashboard");
-  // }, [user]);
 
   const {
     register,
@@ -38,23 +35,32 @@ export default function SignInPage() {
 
   const onSubmit = async (data: FormData) => {
     try {
-      // const success = await signIn(data.email, data.password);
-      if (true) {
-        router.push("/dashboard");
+      const { error } = await supabase.auth.signInWithPassword({
+        email: data.email,
+        password: data.password,
+      });
+
+      if (error) {
+        toast.error(error.message || "Invalid credentials");
+        return;
       }
+
+      toast.success("Welcome back!");
+      router.push("/dashboard");
     } catch (e: any) {
       console.error("Sign-in failed:", e.message);
+      toast.error("Something went wrong. Please try again.");
     }
   };
 
   return (
     <motion.div
-      className="bg-white p-8 rounded-2xl shadow-lg"
+      className="bg-white p-8 rounded-2xl shadow-lg max-w-md mx-auto"
       initial={{ opacity: 0, scale: 0.97 }}
       animate={{ opacity: 1, scale: 1 }}
       transition={{ duration: 0.4 }}
     >
-      <h3 className="text-2xl font-bold text-center text-montrose-red mb-4">Welcome Back</h3>
+      <h3 className="text-2xl font-bold text-center text-montrose-red mb-6">Welcome Back</h3>
 
       <form onSubmit={handleSubmit(onSubmit)} className="space-y-6" noValidate>
         {/* Email */}
@@ -99,8 +105,6 @@ export default function SignInPage() {
           )}
         </div>
 
-        {/* {err && <p className="text-center text-sm text-red-600">{err}</p>} */}
-
         <Button
           type="submit"
           className="w-full bg-montrose-red text-white hover:bg-montrose-dark"
@@ -110,7 +114,7 @@ export default function SignInPage() {
         </Button>
       </form>
 
-      <div className="text-center text-sm text-gray-600 mt-4 space-y-1">
+      <div className="text-center text-sm text-gray-600 mt-6 space-y-2">
         <p>
           Forgot your password?{" "}
           <a href="/auth/forgot-password" className="text-montrose-red hover:underline">
@@ -118,8 +122,8 @@ export default function SignInPage() {
           </a>
         </p>
         <p>
-          Don't have an account?{" "}
-          <a href="/auth/sign-up" className="text-montrose-red hover:underline">
+          Don’t have an account?{" "}
+          <a href="/auth/signup" className="text-montrose-red hover:underline">
             Sign Up
           </a>
         </p>

@@ -48,6 +48,11 @@ export function Header() {
               </Link>
             );
           })}
+          <div>
+            <Button asChild>
+              <Link href={'/auth/login'}>Sign in</Link>
+            </Button>
+          </div>
         </nav>
 
         {/* Desktop CTAs */}

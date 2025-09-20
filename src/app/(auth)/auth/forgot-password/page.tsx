@@ -1,17 +1,18 @@
+// app/auth/forgot-password/page.tsx
 "use client";
 
 import { zodResolver } from "@hookform/resolvers/zod";
 import { motion } from "framer-motion";
 import { Mail } from "lucide-react";
-import { useState } from "react";
 import { useForm } from "react-hook-form";
+import { toast } from "sonner";
+import { useState } from "react";
 import * as z from "zod";
 
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import { useRouter } from "next/navigation";
-// import { useAuthStore } from "../../../../store";
+import { createClient } from "@/lib/supabase/client";
 
 const forgotSchema = z.object({
   email: z.string().email("Enter a valid email"),
@@ -20,9 +21,9 @@ const forgotSchema = z.object({
 type FormData = z.infer<typeof forgotSchema>;
 
 export default function ForgotPasswordPage() {
+  const supabase = createClient();
   const [submitted, setSubmitted] = useState(false);
-  // const { forgotPassword } = useAuthStore();
-  const router = useRouter();
+
   const {
     register,
     handleSubmit,
@@ -31,24 +32,31 @@ export default function ForgotPasswordPage() {
 
   const onSubmit = async (data: FormData) => {
     try {
-      // const success = await forgotPassword(data.email);
-      if (true) {
-        router.push("/auth/reset-password");
-        setSubmitted(true);
+      const { error } = await supabase.auth.resetPasswordForEmail(data.email, {
+        redirectTo: `${process.env.NEXT_PUBLIC_SITE_URL}/auth/reset-password`,
+      });
+
+      if (error) {
+        toast.error(error.message || "Unable to send reset link");
+        return;
       }
+
+      toast.success("Check your email for the reset link.");
+      setSubmitted(true);
     } catch (e: any) {
-      console.error("Forgot-Password failed:", e.message);
+      console.error("Forgot password error:", e.message);
+      toast.error("Something went wrong. Please try again.");
     }
   };
 
   return (
     <motion.div
-      className="bg-white p-8 rounded-2xl shadow-lg space-y-6"
+      className="bg-white p-8 rounded-2xl shadow-lg max-w-md mx-auto"
       initial={{ opacity: 0, scale: 0.97 }}
       animate={{ opacity: 1, scale: 1 }}
       transition={{ duration: 0.4 }}
     >
-      <h3 className="text-2xl font-bold text-center text-montrose-red">
+      <h3 className="text-2xl font-bold text-center text-montrose-red mb-6">
         {submitted ? "Check Your Email" : "Reset Password"}
       </h3>
 
@@ -58,6 +66,7 @@ export default function ForgotPasswordPage() {
         </p>
       ) : (
         <form onSubmit={handleSubmit(onSubmit)} className="space-y-6" noValidate>
+          {/* Email */}
           <div className="relative">
             <Label htmlFor="email">Email</Label>
             <div className="absolute inset-y-0 left-3 flex items-center pointer-events-none">
@@ -81,6 +90,15 @@ export default function ForgotPasswordPage() {
             {isSubmitting ? "Sending…" : "Send Reset Link"}
           </Button>
         </form>
+      )}
+
+      {!submitted && (
+        <p className="text-center text-sm text-gray-600 mt-6">
+          Remember your password?{" "}
+          <a href="/auth/login" className="text-montrose-red hover:underline">
+            Sign In
+          </a>
+        </p>
       )}
     </motion.div>
   );

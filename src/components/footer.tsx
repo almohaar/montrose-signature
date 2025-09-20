@@ -3,7 +3,7 @@
 
 import Link from "next/link";
 import { Input, Button } from "@/components/ui";
-import { Mail, Facebook, Instagram, Twitter, Linkedin } from "lucide-react";
+import { Mail, Facebook, Instagram, Twitter, Linkedin, Youtube, } from "lucide-react";
 
 export const Footer = () => {
   return (
@@ -27,8 +27,9 @@ export const Footer = () => {
               <Twitter size={20} />
             </Link>
             <Link href="#" aria-label="LinkedIn" className="text-gray-500 hover:text-montrose-red">
-              <Linkedin size={20} />
+              <Youtube size={20} />
             </Link>
+
           </div>
         </div>
 
