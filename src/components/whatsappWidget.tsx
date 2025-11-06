@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import { MessageCircle, X } from "lucide-react";
 
 export function WhatsAppWidget() {
-  const phoneNumber = "2349075228884"; // Your WhatsApp number with country code
+  const phoneNumber = "2348085694101"; // Your WhatsApp number with country code
   const [isMobile, setIsMobile] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
 
